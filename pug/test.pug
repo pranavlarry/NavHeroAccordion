@@ -4,21 +4,21 @@ block css
     link(rel="stylesheet", href="css/test.css")
 block content
     .nav
-        nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.fixed-top
+        nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.fixed-top(itemscope)
             a.navbar-brand(href='#') 
-                img.d-inline-block.align-top(src='https://image.flaticon.com/teams/slug/nikita-golubev.jpg', width='30', height='30', alt='')
+                img.d-inline-block.align-top(src='https://image.flaticon.com/teams/slug/nikita-golubev.jpg', width='30', height='30', alt='', itemprop="logo", value="brand")
             button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
                 span.navbar-toggler-icon
             #navbarSupportedContent.collapse.navbar-collapse
                 ul.navbar-nav.mr-auto
                     li.nav-item.active
-                        a.nav-link(href='#')
+                        a.nav-link(href='#', itemprop="navitems")
                             | Home 
                             span.sr-only (current)
                     li.nav-item
-                        a.nav-link(href='#') About
+                        a.nav-link(href='#',itemprop="navitems") About
                     li.nav-item.dropdown
-                        a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                        a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false',itemprop="navitemsDrop")
                             | Services
                         .dropdown-menu(aria-labelledby='navbarDropdown')
                             a.dropdown-item(href='#') Java
@@ -26,27 +26,25 @@ block content
                             a.dropdown-item(href='#') React Js
                             a.dropdown-item(href='#') PHP
                     li.nav-item
-                        a.nav-link(href='#') Portfolio
+                        a.nav-link(href='#carouselExampleCaptions',itemprop="navitems") Portfolio
 
-    .jumbotron
-        h1.display-4 Hello, world!
-        p.lead
-            | This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.
-        hr.my-4
-        p
-            | It uses utility classes for typography and spacing to space content out within the larger container.
-        a.btn.btn-primary.btn-lg(href='#', role='button') Learn more
-
+    
+    .jumbotron(itemscope)
+        .jumbotron-content
+            h1.display-4(itemprop="heroTitle") Hello, world!
+            p.lead(itemprop="heroContent")
+                | This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.
+            
 
             
-    #accordionExample.accordion
+    #accordionExample.accordion(itemscope)
         .card
             #headingOne.card-header
                 h2.mb-0
                     button.btn.btn-link.collapsed(type='button', data-toggle='collapse', data-target='#collapseOne', aria-expanded='true', aria-controls='collapseOne')
                         | First Accordion Heading
             #collapseOne.collapse(aria-labelledby='headingOne', data-parent='#accordionExample')
-                .card-body
+                .card-body(itemprop="accContent")
                     | Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
         .card
             #headingTwo.card-header
@@ -54,7 +52,7 @@ block content
                     button.btn.btn-link.collapsed(type='button', data-toggle='collapse', data-target='#collapseTwo', aria-expanded='false', aria-controls='collapseTwo')
                         | Second Accordion Heading
             #collapseTwo.collapse(aria-labelledby='headingTwo', data-parent='#accordionExample')
-                .card-body
+                .card-body(itemprop="accContent")
                     | Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
         .card
             #headingThree.card-header
@@ -62,8 +60,58 @@ block content
                     button.btn.btn-link.collapsed(type='button', data-toggle='collapse', data-target='#collapseThree', aria-expanded='false', aria-controls='collapseThree')
                         | Third Accordion Heading
             #collapseThree.collapse(aria-labelledby='headingThree', data-parent='#accordionExample')
-                .card-body
+                .card-body(itemprop="accContent")
                     | Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+
+
+    .bd-example(itemscope)
+        #carouselExampleCaptions.carousel.slide(data-ride='carousel')
+            ol.carousel-indicators
+                li.active(data-target='#carouselExampleCaptions', data-slide-to='0')
+                li(data-target='#carouselExampleCaptions', data-slide-to='1')
+                li(data-target='#carouselExampleCaptions', data-slide-to='2')
+            .carousel-inner
+                .carousel-item.active
+                    img.d-block.w-100(src='http://eskipaper.com/images/background-pictures-8.jpg', alt='...', itemprop="carouselImage1", value="1")
+                    .carousel-caption.d-none.d-md-block
+                        h5 First slide label
+                        p(itemprop="carouselImageDec1") Nulla vitae elit libero, a pharetra augue mollis interdum.
+                .carousel-item
+                    img.d-block.w-100(src='https://media.istockphoto.com/photos/christmas-lights-defocused-background-bokeh-gold-blue-picture-id613518332?k=6&m=613518332&s=612x612&w=0&h=Own5MdgJXjNhFd0YUyED1UP3mQsHeNhfML9F-DQYdYw=', alt='...', itemprop="carouselImage1", value="2")
+                    .carousel-caption.d-none.d-md-block
+                        h5 Second slide label
+                        p(itemprop="carouselImageDec2") Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                .carousel-item
+                    img.d-block.w-100(src='https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/JrbItQz/shining-heart-shapes-loopable-love-background_vywvxljzl__F0000.png', alt='...', itemprop="carouselImage1", value="3")
+                    .carousel-caption.d-none.d-md-block
+                        h5 Third slide label
+                        p(itemprop="carouselImageDec3") Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+            a.carousel-control-prev(href='#carouselExampleCaptions', role='button', data-slide='prev')
+                span.carousel-control-prev-icon(aria-hidden='true')
+                span.sr-only Previous
+            a.carousel-control-next(href='#carouselExampleCaptions', role='button', data-slide='next')
+                span.carousel-control-next-icon(aria-hidden='true')
+                span.sr-only Next
+
+
+    .modall(itemscope)
+        button.btn.btn-primary.modall-btn(type='button', data-toggle='modal', data-target='#exampleModal')
+            | Terms and conditions
+        // Modal
+        #exampleModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+            .modal-dialog(role='document')
+                .modal-content
+                    .modal-header
+                        h5#exampleModalLabel.modal-title(itemprop="Terms and conditions") Terms and conditions
+                        button.close(type='button', data-dismiss='modal', aria-label='Close')
+                            span(aria-hidden='true') ×
+                    .modal-body
+                        | ...
+                    .modal-footer
+                        button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+                        button.btn.btn-primary(type='button') Save changes
+
+
 
     script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js', integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1', crossorigin='anonymous')
